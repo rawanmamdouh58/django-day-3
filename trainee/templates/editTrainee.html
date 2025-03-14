@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Trainee{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="mb-4 text-center">Edit Trainee</h2>
+      <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="traineeId" class="form-label">Trainee ID</label>
+          <input type="number" class="form-control" id="traineeId" name="id" placeholder="Enter trainee ID" value="{{ trainee.id }}" readonly required>
+        </div>
+
+        <div class="mb-3">
+          <label for="traineeName" class="form-label">Trainee Name</label>
+          <input type="text" class="form-control" id="traineeName" name="name" placeholder="Enter trainee name" value="{{ trainee.name }}" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="traineeEmail" class="form-label">Trainee Email</label>
+          <input type="email" class="form-control" id="traineeEmail" name="traineeEmail" placeholder="Enter trainee Email" required value="{{ trainee.email }}">
+        </div>
+
+        <div class="mb-3">
+          <label for="traineeImg" class="form-label">Trainee Image</label>
+          <input type="file" class="form-control" id="traineeImg" name="traineeImg">
+        </div>
+
+        <div class="mb-3">
+          <label for="course" class="form-label">Select Course</label>
+          <select name="course" class="form-control">
+            <option value="">Select a Course</option>
+            {% for course in courses %}
+              <option value="{{ course.id }}"
+                {% if trainee.course.id == course.id %}selected{% endif %}>
+                {{ course.name }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Update Trainee</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
