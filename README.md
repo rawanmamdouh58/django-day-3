@@ -1,4 +1,4 @@
-![Image 1](images/img.png)
+
 ![Image 2](images/img_1.png)
 ![Image 3](images/img_2.png)
 ![Image 4](images/img_3.png)
